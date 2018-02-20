@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="formCtrl">
+  <form novalidate>
+    First Name:<br>
+    <input type="text" ng-model="user.firstName"><br>
+    Last Name:<br>
+    <input type="text" ng-model="user.lastName">
+    <br><br>
+    GENDER:
+	<input type="radio" ng-model="m" value="male">MALE
+	<input type="radio" ng-model="m" value="female">FEMALE
+	<input type="radio" ng-model="m" value="others">OTHERS<br>
+    <button ng-click="reset()">RESET</button>
+  </form>
+<div ng-switch="m">
+<div ng-switch-when="male">
+<p>u choose male</p>
+</div>
+<div ng-switch="m">
+<div ng-switch-when="female">
+<p>u choose female</p>
+</div>
+<div ng-switch="m">
+<div ng-switch-when="others">
+<p>u choose others</p>
+</div>
+  <p>form = {{user}}</p>
+  <p>master = {{master}}</p>
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('formCtrl', function($scope) {
+    $scope.master = {firstName:"", lastName:""};
+    $scope.reset = function() {
+        $scope.user = angular.copy($scope.master);
+    };
+    $scope.reset();
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+<html>
+<script src="js/angular.min.js"></script>
+<body>
+
+<script>
+var app = angular.module("myList", []); 
+app.controller("myCtrl", function($scope) {
+    $scope.name = [];
+   
+    $scope.addItem = function () {
+        $scope.name.push($scope.addMe);
+         
+    }    
+});
+</script>
+
+<div ng-app="myList" ng-controller="myCtrl">
+  <ul>
+    <li ng-repeat="x in name">{{x }}</li>
+    
+  </ul>
+  <input ng-model="addMe">
+
+  <button ng-click="addItem()">Add</button>
+</div>
+
+</body>
+</html>
